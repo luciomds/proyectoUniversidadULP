@@ -45,6 +45,7 @@ public class AlumnoData {
                     System.out.println("id del alumno: " + alumno.getId_alumno());
                     
                 }
+                //alumno.setId_alumno(rs.getInt(1));
                 ps.close();
             }
         } catch (SQLException ex) {

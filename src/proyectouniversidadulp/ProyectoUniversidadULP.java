@@ -51,8 +51,10 @@ public class ProyectoUniversidadULP {
           List<Materia> materias = new ArrayList<>();
         materias= md.obtenerMaterias();
          for(Materia m : materias){
-            System.out.println(m);
-    }
+            System.out.println(m);            
+        
+        }
+         System.out.println(a.getId_alumno());
     
 }
 }
