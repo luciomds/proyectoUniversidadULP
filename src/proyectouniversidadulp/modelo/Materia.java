@@ -25,8 +25,8 @@ public class Materia {
         this.activo=true;
     }
 
-    public Materia(int id_materia, String nombre, int cuatrimestre, boolean activo) {
-        this.id_materia = id_materia;
+    public Materia(String nombre, int cuatrimestre, boolean activo) {
+        
         this.nombre = nombre;
         this.cuatrimestre = cuatrimestre;
         this.activo = activo;
