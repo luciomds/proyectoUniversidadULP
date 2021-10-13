@@ -40,7 +40,7 @@ public class MateriaData {
                 ps.setBoolean(3, materia.isActivo());
 
                 ps.executeUpdate(); //NO PONER PARAMETROS
-                ResultSet rs = ps.getGeneratedKeys(); //Recupero el ID (id_alumno)
+                ResultSet rs = ps.getGeneratedKeys(); //Recupero el ID (id_materia)
                 if (rs.next()) {
                     System.out.println("Materia " + materia.getNombre() + ", cargada correctamente.");
                     materia.setId_materia(rs.getInt(1));
