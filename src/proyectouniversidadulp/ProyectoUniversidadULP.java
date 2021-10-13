@@ -17,11 +17,35 @@ public class ProyectoUniversidadULP {
     public static void main(String[] args) throws ClassNotFoundException {
         //Conexion conexion = new Conexion("jdbc:mysql://localhost/universidad","root","");
         Conexion conexion = new Conexion(); //CREANDO LA CONEXION   
+<<<<<<< HEAD
         
         
         List<Alumno> alumnos = new ArrayList<>();
         
         
+=======
+        AlumnoData ad = new AlumnoData(conexion);
+        MateriaData md = new MateriaData  (conexion);
+        
+        List<Alumno> alumnos = new ArrayList<>();
+        
+        Alumno a = new Alumno(2225, "Marcos Suarez", LocalDate.of(2000, Month.NOVEMBER, 28)); //CREANDO ALUMNOS
+        Alumno b = new Alumno(9999, "Jose Sosa", LocalDate.of(1995, Month.MARCH, 12));
+        ad.guardarAlumno(a); //AGREGANDO ALUMNOS
+        ad.guardarAlumno(b);
+        ad.actualizarAlumno(a);
+        System.out.println("buscar alumno:"+ad.buscarAlumno(11)); //BUSCAR ALUMNOS
+        alumnos=ad.obtenerAlumnos();
+        System.out.println("lista:");
+        for(Alumno al : alumnos){
+            System.out.println(al);
+        } 
+>>>>>>> f01b8a17f3ebfb0ba4d36216ba1021cf16685aed
+        
+        
+        Materia m1 = new Materia(0123, "Laboratorio I", 2);
+        
+        md.guardarMateria(m1);
         
     }
     
