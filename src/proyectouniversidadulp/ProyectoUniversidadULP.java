@@ -17,13 +17,13 @@ public class ProyectoUniversidadULP {
     public static void main(String[] args) throws ClassNotFoundException {
         //Conexion conexion = new Conexion("jdbc:mysql://localhost/universidad","root","");
         Conexion conexion = new Conexion(); //CREANDO LA CONEXION   
-<<<<<<< HEAD
+
         
         
-        List<Alumno> alumnos = new ArrayList<>();
+       // List<Alumno> alumnos = new ArrayList<>();
         
         
-=======
+
         AlumnoData ad = new AlumnoData(conexion);
         MateriaData md = new MateriaData  (conexion);
         
@@ -40,13 +40,19 @@ public class ProyectoUniversidadULP {
         for(Alumno al : alumnos){
             System.out.println(al);
         } 
->>>>>>> f01b8a17f3ebfb0ba4d36216ba1021cf16685aed
+
+
         
         
         Materia m1 = new Materia(0123, "Laboratorio I", 2);
         
         md.guardarMateria(m1);
-        
+        md.darDeBajaMateria(m1.getId_materia());
+          List<Materia> materias = new ArrayList<>();
+        materias= md.obtenerMaterias();
+         for(Materia m : materias){
+            System.out.println(m);
     }
     
+}
 }

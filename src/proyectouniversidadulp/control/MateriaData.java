@@ -11,10 +11,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-<<<<<<< HEAD
+import java.util.ArrayList;
+import java.util.List;
+
 import proyectouniversidadulp.modelo.Alumno;
-=======
->>>>>>> f01b8a17f3ebfb0ba4d36216ba1021cf16685aed
+
 import proyectouniversidadulp.modelo.Conexion;
 import proyectouniversidadulp.modelo.Materia;
 
@@ -22,15 +23,13 @@ import proyectouniversidadulp.modelo.Materia;
  *
  * @author daniel
  */
-public class MateriaData {
-<<<<<<< HEAD
-    
+public class MateriaData {    
     private Connection con;
     
-=======
-    private Connection con;
 
->>>>>>> f01b8a17f3ebfb0ba4d36216ba1021cf16685aed
+
+
+
     public MateriaData(Conexion conexion) {
         try {
             this.con = conexion.getConexion();
@@ -39,7 +38,7 @@ public class MateriaData {
             System.out.println("Error en la conexión");
         }
     }
-<<<<<<< HEAD
+
     
     
     public void actualizarMateria(Materia materia){
@@ -66,7 +65,7 @@ public class MateriaData {
         }
     }
     
-=======
+
 
     public void guardarMateria(Materia materia) {
         String sql = "INSERT INTO materia(nombre, cuatrimestre, activo) VALUES (?,?,?)";
@@ -91,5 +90,56 @@ public class MateriaData {
             System.out.println("Error al insertar \n" + ex);
         }
     }
->>>>>>> f01b8a17f3ebfb0ba4d36216ba1021cf16685aed
+    
+   public void darDeBajaMateria(int id){
+       String sql = "UPDATE materia SET  activo=? WHERE idMateria = ?";
+       
+       try {
+           PreparedStatement ps = con.prepareStatement(sql);
+              ps.setBoolean(1, false);
+              ps.setInt(2, id);
+              
+            ps.executeUpdate();
+            
+            System.out.println("Materia dada de baja correctamente.");
+            
+            ps.close();
+            
+        }catch(SQLException sqlE){
+            System.out.println("Error al dar de baja.");
+        }
+    }
+    
+   
+   
+      public List<Materia> obtenerMaterias() {
+        List<Materia> materias = new ArrayList<>();
+        Materia m = null;
+
+        String sql = "SELECT * FROM materia  ";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               m = new Materia();
+                m.setId_materia(rs.getInt(1));
+                m.setNombre(rs.getString(2));
+                m.setCuatrimestre(rs.getInt(3));
+                m.setActivo(rs.getBoolean(4));
+               materias.add(m);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Error al buscar");
+
+        }        
+        return materias;
+    }
+
 }
+    
+
+
